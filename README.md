@@ -27,34 +27,84 @@ Node 18.17+ recommended (matches Next 14 requirements).
 ## 2. Folder structure
 
 ```
-mai-clone/
-├── pages/
-│   ├── _app.js              # global styles + Head defaults
-│   ├── _document.js         # html lang + font preconnect
-│   ├── index.js             # the homepage
-│   └── coming-soon.js       # placeholder route every CTA points to
-│
-├── sections/                # one file per homepage section
-│   ├── Hero.js
-│   ├── ServicesMarquee.js
-│   ├── ToolkitDashboard.js
-│   ├── HowItWorks.js
-│   ├── RealProjects.js
-│   ├── WhyChooseMAI.js
-│   ├── OurDifference.js
-│   ├── LatestBlog.js
-│   ├── Testimonials.js
-│   └── CTABanner.js
-│
+mai-clone-assessment/
 ├── components/
-│   ├── layout/              # Navbar, Footer
-│   ├── ui/                  # Container, Button, SectionHeading, Reveal, FloatingHelp
-│   └── icons/index.js       # inline SVG icon set
+│   ├── icons/
+│   │   └── index.js
+│   │
+│   ├── layout/
+│   │   ├── Footer.js
+│   │   └── Navbar.js
+│   │
+│   └── ui/
+│       ├── Button.js
+│       ├── Container.js
+│       ├── FloatingHelp.js
+│       ├── Reveal.js
+│       └── SectionHeading.js
 │
-├── constants/               # data tables (services, traders, blogs, …)
-├── hooks/                   # useTypewriter, useScrolled, useMediaQuery
-├── utils/                   # animations.js (FM variants), cn.js
-└── styles/globals.css       # Tailwind + reusable component classes
+├── constants/
+│   ├── blogs.js
+│   ├── differences.js
+│   ├── navigation.js
+│   ├── projects.js
+│   ├── services.js
+│   ├── steps.js
+│   ├── testimonials.js
+│   └── traders.js
+│
+├── hooks/
+│   ├── useMediaQuery.js
+│   ├── useScrolled.js
+│   └── useTypewriter.js
+│
+├── pages/
+│   ├── _app.js
+│   ├── _document.js
+│   ├── coming-soon.js
+│   └── index.js
+│
+├── public/
+│   ├── android-chrome-192x192.png
+│   ├── android-chrome-512x512.png
+│   ├── apple-touch-icon.png
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── favicon.ico
+│   │
+│   └── assets/
+│       └── logo.webp
+│
+├── sections/
+│   ├── CTABanner.js
+│   ├── Difference.module.css
+│   ├── Hero.js
+│   ├── HowItWorks.js
+│   ├── LatestBlog.js
+│   ├── OurDifference.js
+│   ├── OurDifference.module.css
+│   ├── RealProjects.js
+│   ├── ServicesMarquee.js
+│   ├── Testimonials.js
+│   ├── ToolkitDashboard.js
+│   └── WhyChooseMAI.js
+│
+├── styles/
+│   └── globals.css
+│
+├── utils/
+│   ├── animations.js
+│   └── cn.js
+│
+├── .eslintrc.json
+├── .gitignore
+├── jsconfig.json
+├── next.config.js
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── README.md
+└── tailwind.config.js
 ```
 
 **Composition rule** — each section is a self-contained file that imports primitives from `components/ui` and data from `constants/`. Sections never import each other. The homepage (`pages/index.js`) is just a list of section components.
