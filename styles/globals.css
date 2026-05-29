@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----- Fonts ----- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
+
+/* ----- Base ----- */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: theme(colors.surface.DEFAULT);
+  color: theme(colors.ink.DEFAULT);
+  font-family: theme(fontFamily.sans);
+  overflow-x: hidden;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ----- Reusable component classes ----- */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1240px] px-5 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-[1360px] px-5 sm:px-6 lg:px-10;
+  }
+
+  .section-y {
+    @apply py-20 md:py-24 lg:py-28;
+  }
+
+  .section-y-sm {
+    @apply py-14 md:py-20;
+  }
+
+  .heading-display {
+    @apply font-display font-bold text-navy tracking-tight;
+    font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+    line-height: 1.08;
+  }
+
+  .heading-section {
+    @apply font-display font-bold text-navy tracking-tight;
+    font-size: clamp(1.875rem, 1.3rem + 2.2vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .eyebrow {
+    @apply text-eyebrow font-semibold uppercase text-brand-blue;
+  }
+
+  .text-lead {
+    @apply text-base md:text-lg text-ink-soft leading-relaxed;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-300 ease-smooth hover:-translate-y-0.5 hover:bg-brand-blue-deep hover:shadow-card-hover focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill border border-white/30 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-all duration-300 ease-smooth hover:border-white/60 hover:bg-white/5;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-white px-7 py-3 text-sm font-semibold text-navy shadow-card transition-all duration-300 ease-smooth hover:-translate-y-0.5 hover:shadow-card-hover;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill px-5 py-2 text-sm font-medium text-white/90 transition-colors duration-200 hover:text-white;
+  }
+
+  /* Cards */
+  .card-base {
+    @apply rounded-card bg-white shadow-card transition-all duration-300 ease-smooth;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-card-hover;
+  }
+}
+
+/* ----- Utilities ----- */
+@layer utilities {
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ----- Scrollbar (subtle) ----- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 27, 61, 0.18);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 27, 61, 0.32);
+}
+
+/* Hide scrollbar utility for horizontal scrollers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* Marquee — infinite horizontal scroll, GPU-accelerated via transform */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation-name: marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* duration is set inline so different rows/instances can have different speeds */
+  will-change: transform;
+}

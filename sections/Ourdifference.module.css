@@ -1,0 +1,79 @@
+/* ─────────────────────────────────────────────
+   Watermark number — sits behind the title
+   Large, bold, pastel, slightly off-screen on mobile,
+   nicely inset on desktop. Title overlays its bottom half.
+   ───────────────────────────────────────────── */
+.watermark {
+  position: absolute;
+  z-index: 0;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: 110px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
+  top: -32px;
+  left: -12px;
+}
+
+@media (min-width: 768px) {
+  .watermark {
+    top: 8px;
+    left: 32px;
+    font-size: 120px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .watermark {
+    font-size: 140px;
+  }
+}
+
+/* ── Per-card pastel hues ──
+   Slightly more saturated than the original site's #E8F3FF
+   so each number reads as a distinct color, not just "pale".  */
+.colorBlue   { color: #DAEAF7; }
+.colorGreen  { color: #DAF0DE; }
+.colorPink   { color: #F7DEDE; }
+.colorPurple { color: #E8D8F2; }
+
+/* ─────────────────────────────────────────────
+   Title — sits IN FRONT of the watermark
+   ───────────────────────────────────────────── */
+.title {
+  position: relative;
+  z-index: 10;
+  padding-top: 24px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #1a1a1a;
+}
+
+@media (min-width: 768px) {
+  .title {
+    padding-top: 56px;
+    font-size: 26px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Body
+   ───────────────────────────────────────────── */
+.body {
+  position: relative;
+  z-index: 10;
+  margin-top: 12px;
+  max-width: 36rem;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6b7280;
+}
+
+@media (min-width: 768px) {
+  .body {
+    font-size: 15px;
+  }
+}
